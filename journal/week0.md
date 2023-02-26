@@ -2,7 +2,7 @@
 I have managed to complete the prerequisites of the bootcamp, as described by Andrew and the team into the [FREE AWS Cloud Project Bootcamp](https://www.youtube.com/watch?v=8b8SvQHc4Pk&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv) Playlist, the requirements was as below:
 - Create a DVCS account(GitHub Account): I already have one.
 - Create CDE account: I have created Gitpod Account, and i'm planing to activate Github Codespaces Account once reaching the Gitpod free tier limit.
-- Create a AWS account: Succsfully created with the free tier.
+- Create an AWS account: Successfully created with the free tier.
 - Custom Domain Name: One consideration that should be taken into account as highlighted in the outline document is to ensure that the domain provider allows you to update the nameservers, so we can point the domain to AWS Namespaces.
 - Diagramming application: Created a free Lucidchart account, so we can drow our Conceptual, Logical and physical diagrams.
 - Distributed tracing tool: Created an HoneyComb.io account.
@@ -11,7 +11,7 @@ I have managed to complete the prerequisites of the bootcamp, as described by An
 # Week 0 — Billing and Architecture
 
 ## Enable the needed privileges for Gitpod:
-By default when sign up into Gitpod using your github account it'll be granted only with `user:email` permission, we need an extra permission so we can push new commits into Github, for our case since it's public repo we'll add the `public_repo` permission to have the write permissions:
+By default when sign up into Gitpod using your github account it'll only be granted with `user:email` permission, we need an extra permission so we can push new commits into Github, in our case since it's public repo we'll add the `public_repo` permission to have the write permissions:
 - Under the user logo in the top right -> `User Settings`.
 - Go to `Integrations`.
 - In Github click into `Edit Permissions` -> check `public_repo` -> then authorize the gitpod to have `public_repo` permission.
