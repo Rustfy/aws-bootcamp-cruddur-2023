@@ -141,9 +141,17 @@ Flowing up the awesome discussion during the live stram, we had a lot of good pr
 A deign that has a commun language between technical team(devolopers, cloud engineers,...), marketing/financial team, investiors, CFO and CEO.
 This diagram should be constracted by all the concerned parties.
 Below the designed diagram:
-![Conceptual Design](https://github.com/Rustfy/aws-bootcamp-cruddur-2023/blob/main/images/week0/09-Cruddur_Conceptual-Diagram.png)
-[Conceptual Design  Lucidchart](https://lucid.app/lucidchart/6dc17b10-082b-47fb-95fa-9147238bec03/edit?viewport_loc=-1620%2C53%2C1480%2C673%2CmnZy554frJXa&invitationId=inv_04df7f9c-e635-4ca9-8cc5-8854c816daae)
+![Conceptual Diagram](https://github.com/Rustfy/aws-bootcamp-cruddur-2023/blob/main/images/week0/09-Cruddur_Conceptual-Diagram.png)
+[Conceptual Diagram Lucidchart](https://lucid.app/lucidchart/6dc17b10-082b-47fb-95fa-9147238bec03/edit?viewport_loc=-1620%2C53%2C1480%2C673%2CmnZy554frJXa&invitationId=inv_04df7f9c-e635-4ca9-8cc5-8854c816daae)
 
 ### Logical Diagram
+  ![Logical Diagram](https://github.com/Rustfy/aws-bootcamp-cruddur-2023/blob/main/images/week0/10-Cruddur_Logical-Diagram.png)
+  [Logical Diagram Lucidchart](https://lucid.app/lucidchart/8fcb5bf3-5424-43d3-a0aa-b238abb47bd8/edit?viewport_loc=-240%2C371%2C1565%2C713%2C0_0&invitationId=inv_98c30f9e-4009-4567-a2aa-c2ec65d51f8b)
+
+### Define a workload
+
+With the IT increase, modern systems are becoming more complex, to address the complexity we need to follow a best practices from the beginning of our project, with the help of enterprise architecture framework, we have seen during the live stream: TOGAF framework and C4 Model.
+For the purpose of our project we are using AWS Well-Architected framework, AWS Well-Architected framework has six pillars: Operational Excellence, Security, Reliability, Performance Efficiency, Cost Optimization and Sustainability. Each pillar define a set of questions with the appropriate best practices and we have to check which one we are following and note down the others to decide if we should follow them or if they do not apply to our use-case.
+
 
 ## Security Consideration
