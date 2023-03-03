@@ -1,5 +1,5 @@
 # Prerequisites
-I have managed to complete the prerequisites of the bootcamp, as described by Andrew and the team into the [FREE AWS Cloud Project Bootcamp](https://www.youtube.com/watch?v=8b8SvQHc4Pk&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv) Playlist, the requirements was as below:
+I have managed to complete the prerequisites of the bootcamp, as described by Andrew and the instructors into the [FREE AWS Cloud Project Bootcamp](https://www.youtube.com/watch?v=8b8SvQHc4Pk&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv) Playlist, the requirements was as below:
 - Create a DVCS account(GitHub Account): I already have one.
 - Create CDE account: I have created Gitpod Account, and i'm planing to activate Github Codespaces Account once reaching the Gitpod free tier limit.
 - Create an AWS account: Successfully created with the free tier.
@@ -153,5 +153,48 @@ Below the designed diagram:
 With the IT increase, modern systems are becoming more complex, to address the complexity we need to follow a best practices from the beginning of our project, with the help of enterprise architecture framework, we have seen during the live stream: TOGAF framework and C4 Model.
 For the purpose of our project we are using AWS Well-Architected framework, AWS Well-Architected framework has six pillars: Operational Excellence, Security, Reliability, Performance Efficiency, Cost Optimization and Sustainability. Each pillar define a set of questions with the appropriate best practices and we have to check which one we are following and note down the others to decide if we should follow them or if they do not apply to our use-case.
 
+## Security Considerations
 
-## Security Consideration
+### Enable MFA for Root user
+We have enabled the MFA for the root user as shown below:
+![Enable MFA for root user](https://github.com/Rustfy/aws-bootcamp-cruddur-2023/blob/main/images/week0/11-AWS_MFA.png)
+
+### Create an Organization Unit
+An organization unit is a container (or logical group) of AWS accounts within a root of an organization, it simplify the the management of those accounts by grouping them into a single OU and apply our governance policy only to the OU, generally speaking the OU are separated by business units (security, Infrastructure, finance,...).
+OUs can be nested and renamed. Accounts can be moved from one OU to another.
+With our bootcamp, it was little bit confusing for me since it's project and i'm not working on a team where tasks are divided, just to keep it simple i comme up with this organization of OUs:
+![AWS Organization](https://github.com/Rustfy/aws-bootcamp-cruddur-2023/blob/main/images/week0/12-AWS_Organization.png)
+
+
+### Amazon CloudTrail
+Amazon CloudTrail is a service that enables governance, compliance, operational auditing, and risk auditing of your Amazon Web Services account. 
+I have managed to create a trail for a purpose of this bootcamp intially it has only recording Management events, no Data or Insights events, to avoid any additional charges.
+![AWS CloudTrail](https://github.com/Rustfy/aws-bootcamp-cruddur-2023/blob/main/images/week0/13-AWS_CloudTrail.png)
+
+### Create IAM Users
+As it's mostly recommended to not use root user account for daily tasks, we should only use it for tasks that can be acomplished only with root user.
+For that we have created an IAM used as described: [above](https://github.com/Rustfy/aws-bootcamp-cruddur-2023/blob/main/journal/week0.md#create-a-new-user-and-generate-aws-credentials)
+
+### IAM roles
+IAM role is a collection of permissions that can be assumed by an AWS service or user, the permissions are defined within IAM Policy which is a document that defines permissions and can be attached to an IAM user, group, or role to grant permissions.
+
+One of the security good practice: Princple of Least Priviledge, where we should assign a user only the needed previliges to performe its tasks, so we have to define multiple IAM groups each group hase the required previliges for a specific type of user.
+
+### Enable AWS Organization SCP
+AWS Organization SCP (Service Control Policy) is like a set of rules that are applied to multiple AWS accounts at once, to help ensure that everyone is following the same rules and using AWS resources in a safe and secure way.
+
+For example, an SCP might be created to prevent certain actions, like deleting an S3 bucket or terminating an EC2 instance. When the SCP is applied to the AWS Organization, it restricts those actions across all member accounts.
+
+So from `Policy` page under `AWS Organization`, we have enbled SCP and add some policy, we have added policy to prevent the attached accounts from leaving the organization (as may other Day 0 policies which was provided by the instructor Hashish).
+![Enable SCP](https://github.com/Rustfy/aws-bootcamp-cruddur-2023/blob/main/images/week0/14-AWS_SCP.png)
+
+### Security Best Practices
+Hashish pointed out some best practices to take int account:
+- Data protection & Residency in accordance to Security Policy.
+- Identity & Access Management with Least Privileges.
+- Governance & Compliance of AWS Services being used:
+	- Global vs Regional Services.
+	- Compliant Services.
+- Shared Responsibility of Threat Detection.
+- Incident Response Plans to include Cloud.
+
