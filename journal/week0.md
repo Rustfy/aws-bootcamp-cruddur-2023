@@ -185,11 +185,11 @@ AWS Organization SCP (Service Control Policy) is like a set of rules that are ap
 
 For example, an SCP might be created to prevent certain actions, like deleting an S3 bucket or terminating an EC2 instance. When the SCP is applied to the AWS Organization, it restricts those actions across all member accounts.
 
-So from `Policy` page under `AWS Organization`, we have enbled SCP and add some policy, we have added policy to prevent the attached accounts from leaving the organization (as may other Day 0 policies which was provided by the instructor Hashish).
+So from `Policy` page under `AWS Organization`, we have enbled SCP and add some policy, we have added policy to prevent the attached accounts from leaving the organization (as many other Day 0 policies which was provided by the instructor Ashish Rajan).
 ![Enable SCP](https://github.com/Rustfy/aws-bootcamp-cruddur-2023/blob/main/images/week0/14-AWS_SCP.png)
 
 ### Security Best Practices
-Hashish pointed out some best practices to take int account:
+Ashish pointed out some best practices to take int account:
 - Data protection & Residency in accordance to Security Policy.
 - Identity & Access Management with Least Privileges.
 - Governance & Compliance of AWS Services being used:
