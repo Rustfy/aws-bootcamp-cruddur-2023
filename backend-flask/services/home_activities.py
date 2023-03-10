@@ -3,6 +3,18 @@ class HomeActivities:
   def run():
     now = datetime.now(timezone.utc).astimezone()
     results = [{
+      'uuid': '11111111-2222-7777-ffff-999999999999',
+      'handle':  'Rustfy',
+      'message': 'Hi there, i\'m Rustfy :)',
+      'created_at': (now - timedelta(minutes=40)).isoformat(),
+      'expires_at': (now + timedelta(days=50)).isoformat(),
+      'likes': 999,
+      'likes_count': 777,
+      'replies_count': 0,
+      'reposts_count': 123,
+      'replies': []
+    },
+      {
       'uuid': '68f126b0-1ceb-4a33-88be-d90fa7109eee',
       'handle':  'Andrew Brown',
       'message': 'Cloud is fun!',
