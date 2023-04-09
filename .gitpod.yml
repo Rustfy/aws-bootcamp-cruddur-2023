@@ -27,5 +27,7 @@ tasks:
 # VSCode extensions
 vscode:
   extensions:
-    - 42Crunch.vscode-openapi
 #    - redhat.vscode-yaml
+    - 42Crunch.vscode-openapi
+    - cweijan.vscode-postgresql-client2
+
