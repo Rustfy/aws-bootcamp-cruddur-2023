@@ -77,5 +77,64 @@ For this we can use a docker orchestration tool like docker compose where we can
 ![Run Docker compose](https://github.com/Rustfy/aws-bootcamp-cruddur-2023/blob/main/images/week1/08-docker-compose.png)
 ![Cruddur app](https://github.com/Rustfy/aws-bootcamp-cruddur-2023/blob/main/images/week1/09-cruddur-app.png)
 
+### Create the notification feature:
+![Add Notification feature](https://github.com/Rustfy/aws-bootcamp-cruddur-2023/blob/main/images/week1/10-Add-notifications-endpoint.png)
+
+### Adding DynamoDB Local and Postgres:
+
+After inegrating Postgres and DynamoDB into our [Docker Compose file](https://github.com/Rustfy/aws-bootcamp-cruddur-2023/blob/main/docker-compose.yml) and compose up our app, let 
+
+1. DynamoDB Local:
+We'll test our DynamoDB:
+- Create a DynamoDB table with the below code:
+```shell
+aws dynamodb create-table \
+    --endpoint-url http://localhost:8000 \
+    --table-name Music \
+    --attribute-definitions \
+        AttributeName=Artist,AttributeType=S \
+        AttributeName=SongTitle,AttributeType=S \
+    --key-schema AttributeName=Artist,KeyType=HASH AttributeName=SongTitle,KeyType=RANGE \
+    --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 \
+    --table-class STANDARD
+```
+![Create DynamoDB Table](https://github.com/Rustfy/aws-bootcamp-cruddur-2023/blob/main/images/week1/11-DynamoDB-Create-table.png)
+
+- Add an item into the created table:
+```shell
+aws dynamodb put-item \
+    --endpoint-url http://localhost:8000 \
+    --table-name Music \
+    --item \
+        '{"Artist": {"S": "No One You Know"}, "SongTitle": {"S": "Call Me Today"}, "AlbumTitle": {"S": "Somewhat Famous"}}' \
+    --return-consumed-capacity TOTAL
+```
+![Add an Item into DynamoDB table](https://github.com/Rustfy/aws-bootcamp-cruddur-2023/blob/main/images/week1/12-DynamoDB-Create-item.png)
+
+- List our table:
+```shell
+aws dynamodb list-tables --endpoint-url http://localhost:8000
+```
+![List DynamoDB table](https://github.com/Rustfy/aws-bootcamp-cruddur-2023/blob/main/images/week1/13-DynamoDB-list-tables.png)
+
+- Get Records:
+```shell
+aws dynamodb scan --table-name Music --query "Items" --endpoint-url http://localhost:8000
+```
+![Get DynamoDB Records](https://github.com/Rustfy/aws-bootcamp-cruddur-2023/blob/main/images/week1/14-DynamoDB-get-records.png)
+
+2. Postgres:
+Install Postgress client into Gitpod
+```gitpod
+- name: postgres
+    init: |
+      curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
+      echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" |sudo tee  /etc/apt/sources.list.d/pgdg.list
+      sudo apt update
+      sudo apt install -y postgresql-client-13 libpq-dev
+```
+Testing the connection to Postgres:
+![Connect to Postgres](https://github.com/Rustfy/aws-bootcamp-cruddur-2023/blob/main/images/week1/15-Postgres-client.png)
+
 
 ## Homework Challenge
