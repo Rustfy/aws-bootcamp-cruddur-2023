@@ -8,6 +8,7 @@ During this week we have dockerized the backend and frontend of Cruddur and test
 
 - Install the Docker VSCode extention.
 - Install the OpenAPI VSCode extention.
+- Install the PostgreSQL VSCode extention.
 
 ### Containerize the backend (Flask-PY)
 The Cruddur backend is writen in flask.
@@ -85,10 +86,10 @@ For this we can use a docker orchestration tool like docker compose where we can
 After inegrating Postgres and DynamoDB into our [Docker Compose file](https://github.com/Rustfy/aws-bootcamp-cruddur-2023/blob/main/docker-compose.yml) and compose up our app, let 
 
 1. DynamoDB Local:
-We'll test our DynamoDB:
-- Create a DynamoDB table with the below code:
-```shell
-aws dynamodb create-table \
+ We'll test our DynamoDB:
+ - Create a DynamoDB table with the below code:
+  ```shell
+  aws dynamodb create-table \
     --endpoint-url http://localhost:8000 \
     --table-name Music \
     --attribute-definitions \
@@ -97,33 +98,32 @@ aws dynamodb create-table \
     --key-schema AttributeName=Artist,KeyType=HASH AttributeName=SongTitle,KeyType=RANGE \
     --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 \
     --table-class STANDARD
-```
-![Create DynamoDB Table](https://github.com/Rustfy/aws-bootcamp-cruddur-2023/blob/main/images/week1/11-DynamoDB-Create-table.png)
+  ```
+  ![Create DynamoDB Table](https://github.com/Rustfy/aws-bootcamp-cruddur-2023/blob/main/images/week1/11-DynamoDB-Create-table.png)
 
-- Add an item into the created table:
-```shell
-aws dynamodb put-item \
-    --endpoint-url http://localhost:8000 \
-    --table-name Music \
-    --item \
-        '{"Artist": {"S": "No One You Know"}, "SongTitle": {"S": "Call Me Today"}, "AlbumTitle": {"S": "Somewhat Famous"}}' \
-    --return-consumed-capacity TOTAL
-```
-![Add an Item into DynamoDB table](https://github.com/Rustfy/aws-bootcamp-cruddur-2023/blob/main/images/week1/12-DynamoDB-Create-item.png)
-
-- List our table:
-```shell
-aws dynamodb list-tables --endpoint-url http://localhost:8000
-```
-![List DynamoDB table](https://github.com/Rustfy/aws-bootcamp-cruddur-2023/blob/main/images/week1/13-DynamoDB-list-tables.png)
-
-- Get Records:
-```shell
-aws dynamodb scan --table-name Music --query "Items" --endpoint-url http://localhost:8000
-```
-![Get DynamoDB Records](https://github.com/Rustfy/aws-bootcamp-cruddur-2023/blob/main/images/week1/14-DynamoDB-get-records.png)
+ - Add an item into the created table:
+  ```shell
+  aws dynamodb put-item \
+     --endpoint-url http://localhost:8000 \
+     --table-name Music \
+     --item \
+         '{"Artist": {"S": "No One You Know"}, "SongTitle": {"S": "Call Me Today"}, "AlbumTitle": {"S": "Somewhat Famous"}}' \
+     --return-consumed-capacity TOTAL
+  ```
+  ![Add an Item into DynamoDB table](https://github.com/Rustfy/aws-bootcamp-cruddur-2023/blob/main/images/week1/12-DynamoDB-Create-item.png)
+ - List our table:
+  ```shell
+  aws dynamodb list-tables --endpoint-url http://localhost:8000
+  ```
+  ![List DynamoDB table](https://github.com/Rustfy/aws-bootcamp-cruddur-2023/blob/main/images/week1/13-DynamoDB-list-tables.png)
+ - Get Records:
+  ```shell
+   aws dynamodb scan --table-name Music --query "Items" --endpoint-url http://localhost:8000
+  ```
+  ![Get DynamoDB Records](https://github.com/Rustfy/aws-bootcamp-cruddur-2023/blob/main/images/week1/14-DynamoDB-get-records.png)
 
 2. Postgres:
+
 Install Postgress client into Gitpod
 ```gitpod
 - name: postgres
